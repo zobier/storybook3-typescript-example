@@ -1,20 +1,40 @@
 import * as React from 'react';
-import './App.css';
+import styled, { keyframes } from 'styled-components';
 
+const Container = styled.div`
+  text-align: center;
+`;
+const Header = styled.div`
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+`;
+const Intro = styled.p`
+  font-size: large;
+`;
+const Rotate = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`;
+const Logo = styled.img`
+  animation: ${Rotate} infinite 20s linear;
+  height: 80px;
+`;
 const logo = require('./logo.svg');
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+      <Container>
+        <Header>
+          <Logo src={logo} alt="logo" />
           <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
+        </Header>
+        <Intro>
           To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
+        </Intro>
+      </Container>
     );
   }
 }
